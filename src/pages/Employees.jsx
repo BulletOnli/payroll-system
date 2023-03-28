@@ -9,17 +9,23 @@ import {
     HStack,
     useDisclosure,
 } from "@chakra-ui/react";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../context/Context";
 import Sidebar from "../components/Sidebar";
 import EmployeeTable from "../components/EmployeeTable";
-import InputEmployee from "../components/InputEmployee";
+import NewEmployeeModal from "../components/NewEmployeeModal";
 
 const Employees = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { fetchEmployeeData } = useGlobalContext();
+    const { dispatch } = useGlobalContext();
 
     useEffect(() => {
-        fetchEmployeeData();
+        fetch("http://localhost:3000/employees")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) =>
+                dispatch({ type: "FETCH_EMPLOYEE_DATA", payload: data })
+            );
     }, []);
 
     return (
@@ -57,7 +63,7 @@ const Employees = () => {
             </Flex>
 
             {/* New employee modal */}
-            <InputEmployee isOpen={isOpen} onClose={onClose} />
+            <NewEmployeeModal isOpen={isOpen} onClose={onClose} />
         </>
     );
 };

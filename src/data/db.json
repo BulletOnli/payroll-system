@@ -1,0 +1,29 @@
+{
+  "employees": [
+    {
+      "name": "catdev",
+      "id": "7e1RSoufLo8ohUndE8LAu",
+      "position": "Web Dev",
+      "rate": "500",
+      "address": "laguna",
+      "email": "catdev@email.com"
+    },
+    {
+      "name": "Bullet",
+      "id": "iIGoxinXMcTcfG---FR0B",
+      "position": "Developer",
+      "rate": "5000",
+      "address": "Philippines",
+      "email": "bullet@email.com"
+    }
+  ],
+  "attendanceLogs": [
+    {
+      "employee": "Bullet",
+      "id": "IL3slDoond935NJ8BdROI",
+      "date": "2023-03-28",
+      "timeIn": "11:07",
+      "timeOut": ""
+    }
+  ]
+}

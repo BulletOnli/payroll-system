@@ -12,18 +12,23 @@ import {
     FormLabel,
     Input,
 } from "@chakra-ui/react";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../context/Context";
 import { nanoid } from "nanoid";
 
-const InputEmployee = ({ isOpen, onClose }) => {
-    const { inputValue, setInputValue, dispatch } = useGlobalContext();
+const NewEmployeeModal = ({ isOpen, onClose }) => {
+    const {
+        setInputEmployeeValue,
+        inputEmployeeValue,
+        dispatch,
+        addNewEmployee,
+    } = useGlobalContext();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setInputValue((prevState) => ({
+        setInputEmployeeValue((prevState) => ({
             ...prevState,
-            id: nanoid(),
             [name]: value,
+            id: nanoid(),
         }));
     };
 
@@ -43,6 +48,7 @@ const InputEmployee = ({ isOpen, onClose }) => {
                             name="name"
                             onChange={handleChange}
                             autoComplete="off"
+                            isRequired
                         />
                         <FormLabel>Position</FormLabel>
                         <Input
@@ -84,12 +90,10 @@ const InputEmployee = ({ isOpen, onClose }) => {
                         Close
                     </Button>
                     <Button
+                        isDisabled={!inputEmployeeValue.name}
                         onClick={() => {
                             onClose();
-                            dispatch({
-                                type: "NEW_EMPLOYEE",
-                                payload: inputValue,
-                            });
+                            addNewEmployee();
                         }}
                         colorScheme="blue"
                     >
@@ -101,4 +105,4 @@ const InputEmployee = ({ isOpen, onClose }) => {
     );
 };
 
-export default InputEmployee;
+export default NewEmployeeModal;

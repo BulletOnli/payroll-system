@@ -1,18 +1,15 @@
-import { nanoid } from "nanoid";
-
 const reducer = (state, action) => {
+    //* FOR EMPLOYEES DATA
     if (action.type === "FETCH_EMPLOYEE_DATA") {
         return {
             ...state,
             employeeData: action.payload,
         };
     }
-    if (action.type === "NEW_EMPLOYEE") {
-        const newData = action.payload;
-
+    if (action.type === "ADD_EMPLOYEE") {
         return {
             ...state,
-            employeeData: [...state.employeeData, newData],
+            employeeData: [action.payload, ...state.employeeData],
         };
     }
     if (action.type === "REMOVE_EMPLOYEE") {
@@ -23,6 +20,27 @@ const reducer = (state, action) => {
         return {
             ...state,
             employeeData: newData,
+        };
+    }
+
+    //* FOR ATTENDANCE DATA
+
+    if (action.type === "FETCH_ATTENDANCE_DATA") {
+        return {
+            ...state,
+            attendanceData: action.payload,
+        };
+    }
+    if (action.type === "ADD_ATTENDANCE") {
+        return {
+            ...state,
+            attendanceData: [action.payload, ...state.attendanceData],
+        };
+    }
+    if (action.type === "CLEAR_ATTENDANCE") {
+        return {
+            ...state,
+            attendanceData: [],
         };
     }
 };

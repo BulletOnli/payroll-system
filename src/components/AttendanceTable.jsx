@@ -8,10 +8,19 @@ import {
     Tr,
     Td,
 } from "@chakra-ui/react";
+import { useGlobalContext } from "../context/Context";
 
 const AttendanceTable = () => {
+    const { attendanceData } = useGlobalContext();
+
     return (
-        <TableContainer h="100%" bg="#F5F5F5">
+        <TableContainer
+            w="100%"
+            h="100%"
+            bg="#F5F5F5"
+            boxShadow="base"
+            rounded="md"
+        >
             <Table variant="striped" colorScheme="gray">
                 <Thead>
                     <Tr>
@@ -22,12 +31,15 @@ const AttendanceTable = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr>
-                        <Td>3/24/23</Td>
-                        <Td>Bullet</Td>
-                        <Td>12:01 PM</Td>
-                        <Td>6:00 PM</Td>
-                    </Tr>
+                    {attendanceData &&
+                        attendanceData.map((data) => (
+                            <Tr key={data.id}>
+                                <Td>{data.date}</Td>
+                                <Td>{data.employee}</Td>
+                                <Td>{data.timeIn}</Td>
+                                <Td>{data.timeOut}</Td>
+                            </Tr>
+                        ))}
                 </Tbody>
             </Table>
         </TableContainer>

@@ -48,7 +48,7 @@ const Sidebar = () => {
                     </NavLink>
                 </ListItem>
                 <ListItem>
-                    <NavLink to="/" className="flex items-center">
+                    <NavLink to="/payroll" className="flex items-center">
                         <ListIcon as={AttachmentIcon} />
                         Payroll
                     </NavLink>
