@@ -16,16 +16,10 @@ import NewEmployeeModal from "../components/NewEmployeeModal";
 
 const Employees = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { dispatch } = useGlobalContext();
+    const { dispatch, fetchEmployeeData } = useGlobalContext();
 
     useEffect(() => {
-        fetch("http://localhost:3000/employees")
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) =>
-                dispatch({ type: "FETCH_EMPLOYEE_DATA", payload: data })
-            );
+        fetchEmployeeData();
     }, []);
 
     return (

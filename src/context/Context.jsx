@@ -26,6 +26,16 @@ const AppProvider = ({ children }) => {
         setInputEmployeeValue(thisData);
     };
 
+    const fetchEmployeeData = () => {
+        fetch("http://localhost:3000/employees")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) =>
+                dispatch({ type: "FETCH_EMPLOYEE_DATA", payload: data })
+            );
+    };
+
     const addNewEmployee = () => {
         fetch("http://localhost:3000/employees", {
             method: "POST",
@@ -39,6 +49,20 @@ const AppProvider = ({ children }) => {
         });
     };
 
+    const updateEmployeeData = (id) => {
+        fetch("http://localhost:3000/employees/" + id, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(inputEmployeeValue),
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then(() => {
+                fetchEmployeeData();
+            });
+    };
+
     const removeEmployee = (id) => {
         fetch("http://localhost:3000/employees/" + id, {
             method: "DELETE",
@@ -48,11 +72,6 @@ const AppProvider = ({ children }) => {
                 payload: id,
             });
         });
-    };
-
-    const saveEditedData = () => {
-        removeEmployee(inputEmployeeValue.id);
-        addNewEmployee();
     };
 
     // * functions for Attendance log
@@ -92,14 +111,15 @@ const AppProvider = ({ children }) => {
                 dispatch,
                 inputEmployeeValue,
                 setInputEmployeeValue,
+                fetchEmployeeData,
                 editEmployeeData,
                 addNewEmployee,
-                saveEditedData,
                 removeEmployee,
                 inputAttendance,
                 setInputAttendance,
                 addAttendance,
                 clearAttendance,
+                updateEmployeeData,
             }}
         >
             {children}

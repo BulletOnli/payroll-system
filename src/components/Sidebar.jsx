@@ -34,21 +34,30 @@ const Sidebar = () => {
             <Heading as="h1" fontSize="3xl" textAlign="center">
                 Payroll System
             </Heading>
-            <List spacing="20px" mt="3rem" fontSize="lg">
+            <List spacing="5px" mt="3rem" fontSize="lg">
                 <ListItem>
-                    <NavLink to="/">
+                    <NavLink
+                        to="/"
+                        className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
+                    >
                         <i className="fa-solid fa-user mr-2"></i>
                         Employees
                     </NavLink>
                 </ListItem>
                 <ListItem>
-                    <NavLink to="/attendance" className="flex items-center">
+                    <NavLink
+                        to="/attendance"
+                        className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
+                    >
                         <ListIcon as={CalendarIcon} />
                         Attendance
                     </NavLink>
                 </ListItem>
                 <ListItem>
-                    <NavLink to="/payroll" className="flex items-center">
+                    <NavLink
+                        to="/payroll"
+                        className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
+                    >
                         <ListIcon as={AttachmentIcon} />
                         Payroll
                     </NavLink>

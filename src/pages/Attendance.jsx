@@ -48,7 +48,7 @@ const Attendance = () => {
                     bg="#c7ccdb"
                 >
                     <Flex
-                        h="3rem"
+                        h="3.5rem"
                         align="center"
                         py="14px"
                         px="1rem"

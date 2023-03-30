@@ -15,7 +15,7 @@ import {
 import { useGlobalContext } from "../context/Context";
 
 const EditEmployeeModal = ({ isOpen, onClose }) => {
-    const { inputEmployeeValue, setInputEmployeeValue, saveEditedData } =
+    const { inputEmployeeValue, setInputEmployeeValue, updateEmployeeData } =
         useGlobalContext();
 
     const handleChange = (e) => {
@@ -95,7 +95,8 @@ const EditEmployeeModal = ({ isOpen, onClose }) => {
                     </Button>
                     <Button
                         onClick={() => {
-                            saveEditedData();
+                            // saveEditedData();
+                            updateEmployeeData(inputEmployeeValue.id);
                             onClose();
                         }}
                         colorScheme="blue"
