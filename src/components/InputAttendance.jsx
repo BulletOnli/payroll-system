@@ -40,7 +40,7 @@ const InputAttendance = () => {
             <FormLabel>Employee</FormLabel>
             <Select
                 value={inputAttendance.employee}
-                name="employee"
+                name="name"
                 onChange={handleChange}
                 mb={3}
             >

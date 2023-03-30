@@ -24,7 +24,6 @@ const reducer = (state, action) => {
     }
 
     //* FOR ATTENDANCE DATA
-
     if (action.type === "FETCH_ATTENDANCE_DATA") {
         return {
             ...state,
@@ -41,6 +40,20 @@ const reducer = (state, action) => {
         return {
             ...state,
             attendanceData: [],
+        };
+    }
+
+    //* FOR PAYROLL DATA
+    if (action.type === "FETCH_PAYROLL_DATA") {
+        return {
+            ...state,
+            payrollData: action.payload,
+        };
+    }
+    if (action.type === "UPDATE_PAYROLL") {
+        return {
+            ...state,
+            payrollData: [...state.payrollData, action.payload],
         };
     }
 };

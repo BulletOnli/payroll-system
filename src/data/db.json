@@ -1,29 +1,37 @@
 {
   "employees": [
     {
-      "name": "John dev",
-      "id": "7e1RSoufLo8ohUndE8LAu",
-      "position": "Web Dev",
-      "rate": "13424234",
-      "address": "laguna",
-      "email": "johndev@gmail.com"
-    },
-    {
-      "name": "Bullet",
-      "id": "iIGoxinXMcTcfG---FR0B",
-      "position": "Developer",
-      "rate": "5000",
-      "address": "Philippines",
+      "name": "bullet",
+      "id": "lAssBQuaWdp1wRTeF4I3C",
+      "position": "developer",
+      "rate": "300",
+      "address": "philippines",
       "email": "bullet@email.com"
     }
   ],
   "attendanceLogs": [
     {
-      "employee": "Bullet",
-      "id": "IL3slDoond935NJ8BdROI",
-      "date": "2023-03-28",
-      "timeIn": "11:07",
-      "timeOut": ""
+      "employee": "",
+      "id": "em1zzhRwufPYbX2D_WNDG",
+      "date": "2023-03-30",
+      "timeIn": "15:04",
+      "timeOut": "",
+      "name": "bullet"
+    }
+  ],
+  "payroll": [
+    {
+      "name": "bullet",
+      "id": "yTMrxureHvajuA2aezEao",
+      "position": "developer",
+      "rate": "300",
+      "address": "philippines",
+      "email": "bullet@email.com",
+      "payDate": "2023-03-30",
+      "startingDate": "2023-03-01",
+      "endingDate": "2023-03-09",
+      "totalDays": 8,
+      "totalPay": 2400
     }
   ]
 }

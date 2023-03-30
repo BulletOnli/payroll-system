@@ -6,6 +6,7 @@ const Context = React.createContext();
 const initialState = {
     employeeData: [],
     attendanceData: [],
+    payrollData: [],
 };
 
 const AppProvider = ({ children }) => {
@@ -18,16 +19,18 @@ const AppProvider = ({ children }) => {
         timeIn: "",
         timeOut: "",
     });
+    const [inputNewPay, setInputNewPay] = useState({});
+    const [employeePayroll, setEmployeePayroll] = useState({});
 
     // find the exact data and set it to input value
     const editEmployeeData = (id) => {
         const thisData = state.employeeData.find((data) => data.id === id);
-
         setInputEmployeeValue(thisData);
     };
 
+    //* FETCH ANY DATA
     const fetchEmployeeData = () => {
-        fetch("http://localhost:3000/employees")
+        fetch(`http://localhost:3000/employees`)
             .then((res) => {
                 return res.json();
             })
@@ -50,7 +53,7 @@ const AppProvider = ({ children }) => {
     };
 
     const updateEmployeeData = (id) => {
-        fetch("http://localhost:3000/employees/" + id, {
+        fetch(`http://localhost:3000/employees/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputEmployeeValue),
@@ -64,7 +67,7 @@ const AppProvider = ({ children }) => {
     };
 
     const removeEmployee = (id) => {
-        fetch("http://localhost:3000/employees/" + id, {
+        fetch(`http://localhost:3000/employees/${id}`, {
             method: "DELETE",
         }).then(() => {
             dispatch({
@@ -93,13 +96,27 @@ const AppProvider = ({ children }) => {
         const allEmployeeId = state.attendanceData.map((data) => data.id);
 
         allEmployeeId.forEach((id) => {
-            fetch("http://localhost:3000/attendanceLogs/" + id, {
+            fetch(`http://localhost:3000/attendanceLogs/${id}`, {
                 method: "DELETE",
             }).then(() => {
                 dispatch({
                     type: "CLEAR_ATTENDANCE",
                     payload: id,
                 });
+            });
+        });
+    };
+
+    //* functions for PAYROLL
+    const updatePayroll = () => {
+        fetch("http://localhost:3000/payroll", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(employeePayroll),
+        }).then(() => {
+            dispatch({
+                type: "UPDATE_PAYROLL",
+                payload: employeePayroll,
             });
         });
     };
@@ -120,6 +137,11 @@ const AppProvider = ({ children }) => {
                 addAttendance,
                 clearAttendance,
                 updateEmployeeData,
+                inputNewPay,
+                setInputNewPay,
+                updatePayroll,
+                employeePayroll,
+                setEmployeePayroll,
             }}
         >
             {children}

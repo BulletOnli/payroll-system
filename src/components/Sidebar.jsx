@@ -40,7 +40,7 @@ const Sidebar = () => {
                         to="/"
                         className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
                     >
-                        <i className="fa-solid fa-user mr-2"></i>
+                        <i className="fa-solid fa-user mr-2 "></i>
                         Employees
                     </NavLink>
                 </ListItem>

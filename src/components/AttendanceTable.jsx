@@ -35,7 +35,7 @@ const AttendanceTable = () => {
                         attendanceData.map((data) => (
                             <Tr key={data.id}>
                                 <Td>{data.date}</Td>
-                                <Td>{data.employee}</Td>
+                                <Td>{data.name}</Td>
                                 <Td>{data.timeIn}</Td>
                                 <Td>{data.timeOut}</Td>
                             </Tr>

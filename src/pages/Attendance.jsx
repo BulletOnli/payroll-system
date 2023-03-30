@@ -47,14 +47,8 @@ const Attendance = () => {
                     width="100%"
                     bg="#c7ccdb"
                 >
-                    <Flex
-                        h="3.5rem"
-                        align="center"
-                        py="14px"
-                        px="1rem"
-                        bg="#F5F5F5"
-                    >
-                        {/* <Heading fontSize="xl">Attendance</Heading> */}
+                    <Flex align="center" py="14px" px="1rem" bg="#F5F5F5">
+                        <Heading fontSize="xl">Attendance</Heading>
                     </Flex>
                     <Grid
                         gridTemplateColumns="repeat(2, 1fr)"
