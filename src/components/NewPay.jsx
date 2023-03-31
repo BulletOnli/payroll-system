@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import {
     HStack,
     Input,
@@ -14,11 +14,13 @@ import { nanoid } from "nanoid";
 const NewPay = () => {
     const {
         employeeData,
+        updatePayroll,
         inputNewPay,
         setInputNewPay,
-        updatePayroll,
+        employeePayroll,
         setEmployeePayroll,
     } = useGlobalContext();
+    const { startingDate, endingDate, rate } = inputNewPay;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,23 +38,36 @@ const NewPay = () => {
         });
     };
 
-    const calculateEarnings = () => {
+    const { totalDays, totalPay } = useMemo(() => {
         let startDate = new Date(inputNewPay.startingDate);
         let endDate = new Date(inputNewPay.endingDate);
         let totalTime = endDate.getTime() - startDate.getTime();
         let totalDays = Math.floor(totalTime / (1000 * 3600 * 24));
         let totalPay = inputNewPay.rate * totalDays;
 
-        setEmployeePayroll(() => ({
-            ...inputNewPay,
+        return {
             totalDays: totalDays.toString(),
             totalPay: totalPay.toString(),
+        };
+    }, [startingDate, endingDate, rate]);
+
+    const calculateEarnings = () => {
+        // let startDate = new Date(inputNewPay.startingDate);
+        // let endDate = new Date(inputNewPay.endingDate);
+        // let totalTime = endDate.getTime() - startDate.getTime();
+        // let totalDays = Math.floor(totalTime / (1000 * 3600 * 24));
+        // let totalPay = inputNewPay.rate * totalDays;
+
+        setInputNewPay((prevState) => ({
+            ...prevState,
+            totalDays,
+            totalPay,
         }));
     };
 
     useEffect(() => {
         calculateEarnings();
-    }, [inputNewPay.endingDate]);
+    }, [startingDate, endingDate, rate]);
 
     return (
         <FormControl>
@@ -89,7 +104,10 @@ const NewPay = () => {
                 mt={2}
                 colorScheme="red"
                 onClick={() => {
+                    // calculateEarnings();
+
                     updatePayroll();
+                    // console.log(inputNewPay);
                 }}
             >
                 Calculate

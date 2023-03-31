@@ -14,7 +14,7 @@ import {
 import { useGlobalContext } from "../context/Context";
 
 const EarningsTable = () => {
-    const { employeePayroll } = useGlobalContext();
+    const { inputNewPay, employeePayroll } = useGlobalContext();
 
     return (
         <TableContainer

@@ -35,17 +35,17 @@
   ],
   "payroll": [
     {
+      "totalDays": "30",
+      "totalPay": "9000",
       "name": "bullet",
-      "id": "4LtjgRPJbJSVezTSRhyDw",
+      "id": "8-57BKyv87gSbsUDjZu50",
       "position": "developer",
       "rate": "300",
       "address": "philippines",
       "email": "bullet@email.com",
       "payDate": "2023-03-31",
       "startingDate": "2023-03-01",
-      "endingDate": "2023-03-03",
-      "totalDays": "2",
-      "totalPay": "600"
+      "endingDate": "2023-03-31"
     }
   ]
 }

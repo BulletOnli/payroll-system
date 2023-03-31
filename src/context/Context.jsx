@@ -102,14 +102,15 @@ const AppProvider = ({ children }) => {
 
     //* functions for PAYROLL
     const updatePayroll = () => {
+        setEmployeePayroll(inputNewPay);
         fetch("http://localhost:3000/payroll", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(employeePayroll),
+            body: JSON.stringify(inputNewPay),
         }).then(() => {
             dispatch({
                 type: "UPDATE_PAYROLL",
-                payload: employeePayroll,
+                payload: inputNewPay,
             });
         });
     };
@@ -130,9 +131,9 @@ const AppProvider = ({ children }) => {
                 addAttendance,
                 clearAttendance,
                 updateEmployeeData,
+                updatePayroll,
                 inputNewPay,
                 setInputNewPay,
-                updatePayroll,
                 employeePayroll,
                 setEmployeePayroll,
             }}
