@@ -7,31 +7,45 @@
       "rate": "300",
       "address": "philippines",
       "email": "bullet@email.com"
+    },
+    {
+      "name": "catdev",
+      "id": "x-jMy0T9dZ1fDZd1-KzCh",
+      "position": "game dev",
+      "rate": "500",
+      "address": "laguna",
+      "email": "catdev@gmail.com"
+    },
+    {
+      "name": "bullet 2",
+      "id": "SGUc4pknztKcBXs7U3Zt1",
+      "position": "dev",
+      "rate": "123",
+      "address": "langla ",
+      "email": "email"
     }
   ],
   "attendanceLogs": [
     {
-      "employee": "",
-      "id": "em1zzhRwufPYbX2D_WNDG",
-      "date": "2023-03-30",
-      "timeIn": "15:04",
-      "timeOut": "",
-      "name": "bullet"
+      "name": "bullet",
+      "id": "MKj47DLIrC3cXyiu5VYe7",
+      "date": "2023-03-31",
+      "timeIn": "20:24"
     }
   ],
   "payroll": [
     {
       "name": "bullet",
-      "id": "yTMrxureHvajuA2aezEao",
+      "id": "4LtjgRPJbJSVezTSRhyDw",
       "position": "developer",
       "rate": "300",
       "address": "philippines",
       "email": "bullet@email.com",
-      "payDate": "2023-03-30",
+      "payDate": "2023-03-31",
       "startingDate": "2023-03-01",
-      "endingDate": "2023-03-09",
-      "totalDays": 8,
-      "totalPay": 2400
+      "endingDate": "2023-03-03",
+      "totalDays": "2",
+      "totalPay": "600"
     }
   ]
 }

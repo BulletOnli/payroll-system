@@ -27,7 +27,7 @@ const InputAttendance = () => {
 
     const resetInput = () => {
         setInputAttendance({
-            employee: "",
+            name: "",
             id: "",
             date: "",
             timeIn: "",
@@ -39,7 +39,7 @@ const InputAttendance = () => {
         <FormControl>
             <FormLabel>Employee</FormLabel>
             <Select
-                value={inputAttendance.employee}
+                value={inputAttendance.name}
                 name="name"
                 onChange={handleChange}
                 mb={3}

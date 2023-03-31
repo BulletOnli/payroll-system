@@ -9,6 +9,7 @@ import {
     Td,
     TableCaption,
     TableContainer,
+    Heading,
 } from "@chakra-ui/react";
 import { useGlobalContext } from "../context/Context";
 
@@ -16,7 +17,16 @@ const EarningsTable = () => {
     const { employeePayroll } = useGlobalContext();
 
     return (
-        <TableContainer h="100%">
+        <TableContainer
+            h="100%"
+            p="20px"
+            bg="#F5F5F5"
+            rounded="md"
+            boxShadow="base"
+        >
+            <Heading size="md" mb={3.5}>
+                Earnings
+            </Heading>
             <Table variant="striped" colorScheme="gray">
                 <TableCaption fontSize="md" fontWeight="bold">
                     Ordinary Hours Worked

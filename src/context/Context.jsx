@@ -12,13 +12,7 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [inputEmployeeValue, setInputEmployeeValue] = useState({});
-    const [inputAttendance, setInputAttendance] = useState({
-        employee: "",
-        id: "",
-        date: "",
-        timeIn: "",
-        timeOut: "",
-    });
+    const [inputAttendance, setInputAttendance] = useState({});
     const [inputNewPay, setInputNewPay] = useState({});
     const [employeePayroll, setEmployeePayroll] = useState({});
 
@@ -28,7 +22,6 @@ const AppProvider = ({ children }) => {
         setInputEmployeeValue(thisData);
     };
 
-    //* FETCH ANY DATA
     const fetchEmployeeData = () => {
         fetch(`http://localhost:3000/employees`)
             .then((res) => {

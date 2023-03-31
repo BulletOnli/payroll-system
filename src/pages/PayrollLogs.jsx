@@ -14,7 +14,7 @@ import EarningsTable from "../components/EarningsTable";
 import { useGlobalContext } from "../context/Context";
 import PayrollTable from "../components/PayrollTable";
 
-const Payroll = () => {
+const PayrollLogs = () => {
     const { payrollData, dispatch } = useGlobalContext();
 
     useEffect(() => {
@@ -32,31 +32,12 @@ const Payroll = () => {
                 <Flex align="center" py="14px" px="1rem" bg="#F5F5F5">
                     <Heading fontSize="xl">Payroll</Heading>
                 </Flex>
-                <Grid
-                    templateColumns="repeat(2, 1fr)"
-                    h="100%"
-                    p="1.5rem"
-                    gap={5}
-                >
-                    <GridItem
-                        h="max-content"
-                        p="20px"
-                        bg="#F5F5F5"
-                        rounded="md"
-                        boxShadow="base"
-                    >
-                        <Heading size="md" mb={4}>
-                            New Pay
-                        </Heading>
-                        <NewPay />
-                    </GridItem>
-                    <GridItem>
-                        <EarningsTable />
-                    </GridItem>
-                </Grid>
+                <Box p="1.5rem" h="100%">
+                    <PayrollTable />
+                </Box>
             </Flex>
         </Flex>
     );
 };
 
-export default Payroll;
+export default PayrollLogs;

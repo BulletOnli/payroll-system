@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     HStack,
     Input,
@@ -22,7 +22,6 @@ const NewPay = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         const findEmployee = employeeData.find(
             (data) => data.name === inputNewPay.name
         );
@@ -46,15 +45,19 @@ const NewPay = () => {
 
         setEmployeePayroll(() => ({
             ...inputNewPay,
-            totalDays: totalDays,
-            totalPay: totalPay,
+            totalDays: totalDays.toString(),
+            totalPay: totalPay.toString(),
         }));
     };
+
+    useEffect(() => {
+        calculateEarnings();
+    }, [inputNewPay.endingDate]);
 
     return (
         <FormControl>
             <FormLabel>Employee:</FormLabel>
-            <Select name="name" onChange={handleChange} mb={3}>
+            <Select name="name" onChange={handleChange} mb={4}>
                 <option value="">-- Choose an Employee --</option>
                 {employeeData &&
                     employeeData.map((data) => (
@@ -64,28 +67,28 @@ const NewPay = () => {
                     ))}
             </Select>
             <FormLabel>Pay Date:</FormLabel>
-            <Input mb={5} name="payDate" type="date" onChange={handleChange} />
+            <Input mb={4} name="payDate" type="date" onChange={handleChange} />
             <FormLabel>Starting Date:</FormLabel>
             <Input
-                mb={5}
+                mb={4}
                 name="startingDate"
                 type="date"
                 onChange={handleChange}
             />
             <FormLabel>Ending Date:</FormLabel>
             <Input
-                mb={5}
+                mb={4}
                 name="endingDate"
                 type="date"
                 onChange={handleChange}
             />
 
             <Button
+                isDisabled={!inputNewPay.endingDate}
                 leftIcon={<RepeatIcon />}
+                mt={2}
                 colorScheme="red"
-                mt={3}
                 onClick={() => {
-                    calculateEarnings();
                     updatePayroll();
                 }}
             >

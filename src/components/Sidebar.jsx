@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/icons";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Footer from "./Footer";
 
 const Sidebar = () => {
     return (
@@ -29,6 +30,7 @@ const Sidebar = () => {
             width="20rem"
             height="100vh"
             p="20px"
+            pb="5px"
             bg="#F5F5F5"
         >
             <Heading as="h1" fontSize="3xl" textAlign="center">
@@ -62,6 +64,15 @@ const Sidebar = () => {
                         Payroll
                     </NavLink>
                 </ListItem>
+                <ListItem>
+                    <NavLink
+                        to="/payrolllogs"
+                        className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
+                    >
+                        <ListIcon as={AttachmentIcon} />
+                        Payroll Logs
+                    </NavLink>
+                </ListItem>
             </List>
             <Spacer />
             <Flex flexDirection="column">
@@ -73,6 +84,7 @@ const Sidebar = () => {
                     <Icon as={WarningIcon} mr="5px" />
                     Log out
                 </Button>
+                <Footer />
             </Flex>
         </Flex>
     );
