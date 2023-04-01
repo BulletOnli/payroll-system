@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Table,
     Thead,
@@ -18,7 +18,7 @@ const EarningsTable = () => {
 
     return (
         <TableContainer
-            h="100%"
+            // h="100%"
             p="20px"
             bg="#F5F5F5"
             rounded="md"

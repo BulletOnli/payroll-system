@@ -56,6 +56,16 @@ const reducer = (state, action) => {
             payrollData: [...state.payrollData, action.payload],
         };
     }
+    if (action.type === "REMOVE_PAYROLL") {
+        const updatedPayroll = state.payrollData.filter(
+            (data) => data.id !== action.payload
+        );
+
+        return {
+            ...state,
+            payrollData: updatedPayroll,
+        };
+    }
 };
 
 export default reducer;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     TableContainer,
     Table,
@@ -11,7 +11,11 @@ import {
 import { useGlobalContext } from "../context/Context";
 
 const AttendanceTable = () => {
-    const { attendanceData } = useGlobalContext();
+    const { attendanceData, duplicateAttendanceData } = useGlobalContext();
+
+    const data = duplicateAttendanceData.length
+        ? duplicateAttendanceData
+        : attendanceData;
 
     return (
         <TableContainer
@@ -21,7 +25,7 @@ const AttendanceTable = () => {
             boxShadow="base"
             rounded="md"
         >
-            <Table variant="striped" colorScheme="gray">
+            <Table>
                 <Thead>
                     <Tr>
                         <Th>Date</Th>
@@ -31,8 +35,8 @@ const AttendanceTable = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {attendanceData &&
-                        attendanceData.map((data) => (
+                    {data &&
+                        data.map((data) => (
                             <Tr key={data.id}>
                                 <Td>{data.date}</Td>
                                 <Td>{data.name}</Td>

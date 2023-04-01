@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Table,
     Thead,
@@ -15,16 +15,22 @@ import { useGlobalContext } from "../context/Context";
 import { nanoid } from "nanoid";
 
 const PayrollTable = () => {
-    const { payrollData } = useGlobalContext();
+    const { payrollData, removePayroll, setEmployeePayroll } =
+        useGlobalContext();
+
+    useEffect(() => {
+        setEmployeePayroll({});
+    }, []);
+
     return (
         <TableContainer
             h="100%"
             bg="#F5F5F5"
-            p="20px"
+            p="10px"
             boxShadow="base"
             rounded="md"
         >
-            <Table size="sm">
+            <Table>
                 <Thead>
                     <Tr>
                         <Th>Payment Date</Th>
@@ -47,7 +53,11 @@ const PayrollTable = () => {
                                 <Td>{data.totalDays}</Td>
                                 <Td>{data.totalPay}</Td>
                                 <Td>
-                                    <Button colorScheme="red" size="xs">
+                                    <Button
+                                        colorScheme="red"
+                                        size="xs"
+                                        onClick={() => removePayroll(data.id)}
+                                    >
                                         Delete
                                     </Button>
                                 </Td>

@@ -20,6 +20,8 @@ import {
     AttachmentIcon,
 } from "@chakra-ui/icons";
 import React from "react";
+import { FaMoneyCheck } from "react-icons/fa";
+import { BsBook } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import Footer from "./Footer";
 
@@ -60,16 +62,16 @@ const Sidebar = () => {
                         to="/payroll"
                         className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
                     >
-                        <ListIcon as={AttachmentIcon} />
+                        <ListIcon as={FaMoneyCheck} />
                         Payroll
                     </NavLink>
                 </ListItem>
                 <ListItem>
                     <NavLink
-                        to="/payrolllogs"
+                        to="/paylogs"
                         className="flex items-center hover:bg-[#C7CCDB] px-8 py-3 rounded-[2rem]"
                     >
-                        <ListIcon as={AttachmentIcon} />
+                        <ListIcon as={BsBook} />
                         Payroll Logs
                     </NavLink>
                 </ListItem>

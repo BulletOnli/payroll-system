@@ -7,6 +7,7 @@ import {
     VStack,
     Box,
     Spacer,
+    Stack,
 } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
 import NewPay from "../components/NewPay";
@@ -39,7 +40,7 @@ const Payroll = () => {
                     gap={5}
                 >
                     <GridItem
-                        h="max-content"
+                        // h="max-content"
                         p="20px"
                         bg="#F5F5F5"
                         rounded="md"
@@ -51,7 +52,17 @@ const Payroll = () => {
                         <NewPay />
                     </GridItem>
                     <GridItem>
-                        <EarningsTable />
+                        <Stack>
+                            <EarningsTable />
+                            <Box
+                                p="20px"
+                                bg="#F5F5F5"
+                                rounded="md"
+                                boxShadow="base"
+                            >
+                                sfsdf
+                            </Box>
+                        </Stack>
                     </GridItem>
                 </Grid>
             </Flex>

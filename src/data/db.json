@@ -1,51 +1,5 @@
 {
-  "employees": [
-    {
-      "name": "bullet",
-      "id": "lAssBQuaWdp1wRTeF4I3C",
-      "position": "developer",
-      "rate": "300",
-      "address": "philippines",
-      "email": "bullet@email.com"
-    },
-    {
-      "name": "catdev",
-      "id": "x-jMy0T9dZ1fDZd1-KzCh",
-      "position": "game dev",
-      "rate": "500",
-      "address": "laguna",
-      "email": "catdev@gmail.com"
-    },
-    {
-      "name": "bullet 2",
-      "id": "SGUc4pknztKcBXs7U3Zt1",
-      "position": "dev",
-      "rate": "123",
-      "address": "langla ",
-      "email": "email"
-    }
-  ],
-  "attendanceLogs": [
-    {
-      "name": "bullet",
-      "id": "MKj47DLIrC3cXyiu5VYe7",
-      "date": "2023-03-31",
-      "timeIn": "20:24"
-    }
-  ],
-  "payroll": [
-    {
-      "totalDays": "30",
-      "totalPay": "9000",
-      "name": "bullet",
-      "id": "8-57BKyv87gSbsUDjZu50",
-      "position": "developer",
-      "rate": "300",
-      "address": "philippines",
-      "email": "bullet@email.com",
-      "payDate": "2023-03-31",
-      "startingDate": "2023-03-01",
-      "endingDate": "2023-03-31"
-    }
-  ]
+  "employees": [],
+  "attendanceLogs": [],
+  "payroll": []
 }

@@ -39,7 +39,7 @@ const EmployeeTable = () => {
                         <Tr>
                             <Th>Name</Th>
                             <Th>Position</Th>
-                            <Th>Hourly Rate</Th>
+                            <Th>Daily Rate</Th>
                             <Th>Address</Th>
                             <Th>Email</Th>
                             <Th>Actions</Th>

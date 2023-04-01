@@ -9,12 +9,10 @@ import {
     Spacer,
 } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
-import NewPay from "../components/NewPay";
-import EarningsTable from "../components/EarningsTable";
 import { useGlobalContext } from "../context/Context";
 import PayrollTable from "../components/PayrollTable";
 
-const PayrollLogs = () => {
+const Paylogs = () => {
     const { payrollData, dispatch } = useGlobalContext();
 
     useEffect(() => {
@@ -30,7 +28,7 @@ const PayrollLogs = () => {
             <Sidebar />
             <Flex as="main" flexDirection="column" width="100%" bg="#c7ccdb">
                 <Flex align="center" py="14px" px="1rem" bg="#F5F5F5">
-                    <Heading fontSize="xl">Payroll</Heading>
+                    <Heading fontSize="xl">Payroll Logs</Heading>
                 </Flex>
                 <Box p="1.5rem" h="100%">
                     <PayrollTable />
@@ -40,4 +38,4 @@ const PayrollLogs = () => {
     );
 };
 
-export default PayrollLogs;
+export default Paylogs;

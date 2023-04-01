@@ -58,7 +58,7 @@ const NewEmployeeModal = ({ isOpen, onClose }) => {
                             onChange={handleChange}
                             autoComplete="off"
                         />
-                        <FormLabel>Rate per hour</FormLabel>
+                        <FormLabel>Rate per Day</FormLabel>
                         <Input
                             type="number"
                             mb={3}

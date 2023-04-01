@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     HStack,
     Input,
@@ -36,15 +36,15 @@ const InputAttendance = () => {
     };
 
     return (
-        <FormControl>
+        <FormControl isRequired>
             <FormLabel>Employee</FormLabel>
             <Select
+                placeholder="-- Choose an Employee --"
                 value={inputAttendance.name}
                 name="name"
                 onChange={handleChange}
-                mb={3}
+                mb={5}
             >
-                <option value="">-- Choose an Employee --</option>
                 {employeeData &&
                     employeeData.map((data) => (
                         <option key={data.id} value={data.name}>
@@ -55,7 +55,7 @@ const InputAttendance = () => {
             <FormLabel>Date</FormLabel>
             <Input
                 value={inputAttendance.date}
-                mb={3}
+                mb={5}
                 name="date"
                 placeholder="Select Date and Time"
                 type="date"
@@ -65,7 +65,7 @@ const InputAttendance = () => {
             <Input
                 value={inputAttendance.timeIn}
                 isDisabled={inputAttendance.timeOut}
-                mb={3}
+                mb={5}
                 name="timeIn"
                 type="time"
                 placeholder="Current Time"

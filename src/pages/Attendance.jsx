@@ -17,9 +17,12 @@ import {
     ModalCloseButton,
     useDisclosure,
     Icon,
+    Stack,
+    Select,
+    Text,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import AttendanceTable from "../components/AttendanceTable";
 import InputAttendance from "../components/InputAttendance";
@@ -27,15 +30,36 @@ import { useGlobalContext } from "../context/Context";
 
 const Attendance = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { dispatch, clearAttendance } = useGlobalContext();
+    const {
+        dispatch,
+        clearAttendance,
+        attendanceData,
+        employeeData,
+        duplicateAttendanceData,
+        setDuplicateAttendanceData,
+    } = useGlobalContext();
+    const selectRef = useRef(null);
 
     useEffect(() => {
         fetch("http://localhost:3000/attendanceLogs")
             .then((res) => res.json())
-            .then((data) =>
-                dispatch({ type: "FETCH_ATTENDANCE_DATA", payload: data })
-            );
+            .then((data) => {
+                dispatch({ type: "FETCH_ATTENDANCE_DATA", payload: data });
+                setDuplicateAttendanceData([]);
+            });
     }, []);
+
+    const filter = () => {
+        const selectedName = selectRef.current.value;
+        if (selectedName === "") {
+            setDuplicateAttendanceData([]);
+        } else {
+            const filteredData = attendanceData.filter(
+                (attendance) => attendance.name === selectedName
+            );
+            setDuplicateAttendanceData(filteredData);
+        }
+    };
 
     return (
         <>
@@ -59,17 +83,46 @@ const Attendance = () => {
                         <GridItem>
                             <Flex h="100%" direction="column">
                                 <HStack
-                                    p="5px"
+                                    p="10px"
                                     rounded="md"
                                     mb={2}
                                     bg="#F5F5F5"
                                     boxShadow="base"
                                 >
-                                    <Heading as="h3" size="md" mx="5px">
-                                        Attendance Log
-                                    </Heading>
+                                    <HStack>
+                                        <Text fontWeight="bold">Filter:</Text>
+                                        <Select
+                                            ref={selectRef}
+                                            placeholder="All"
+                                            size="sm"
+                                        >
+                                            {attendanceData &&
+                                                Array.from(
+                                                    new Set(
+                                                        attendanceData.map(
+                                                            (data) => data.name
+                                                        )
+                                                    )
+                                                ).map((name) => (
+                                                    <option
+                                                        key={name}
+                                                        value={name}
+                                                    >
+                                                        {name}
+                                                    </option>
+                                                ))}
+                                        </Select>
+                                        <Button
+                                            colorScheme="blue"
+                                            size="sm"
+                                            onClick={() => {
+                                                filter();
+                                            }}
+                                        >
+                                            Run
+                                        </Button>
+                                    </HStack>
                                     <Spacer />
-
                                     <Button
                                         colorScheme="red"
                                         size="sm"
@@ -81,32 +134,38 @@ const Attendance = () => {
                                 <AttendanceTable />
                             </Flex>
                         </GridItem>
-                        <VStack spacing={5}>
-                            <GridItem
-                                w="100%"
-                                bg="#F5F5F5"
-                                p="20px"
-                                boxShadow="base"
-                                rounded="md"
-                            >
-                                <InputAttendance />
-                            </GridItem>
-
-                            <GridItem
-                                w="100%"
-                                bg="#F5F5F5"
-                                p="20px"
-                                boxShadow="base"
-                                rounded="md"
-                            >
-                                dsff
-                            </GridItem>
-                        </VStack>
+                        <GridItem>
+                            <Stack spacing={3}>
+                                <Box
+                                    w="100%"
+                                    bg="#F5F5F5"
+                                    p="20px"
+                                    boxShadow="base"
+                                    rounded="md"
+                                >
+                                    <InputAttendance />
+                                </Box>
+                                <Box
+                                    w="100%"
+                                    bg="#F5F5F5"
+                                    p="15px"
+                                    boxShadow="base"
+                                    rounded="md"
+                                >
+                                    <Heading
+                                        as="h2"
+                                        size="md"
+                                        textAlign="center"
+                                    >
+                                        Attendance
+                                    </Heading>
+                                </Box>
+                            </Stack>
+                        </GridItem>
                     </Grid>
                 </Flex>
             </Flex>
-
-            {/* Warning MOdal */}
+            //* Warning MOdal */
             <Modal isOpen={isOpen} onClose={onClose} isCentered="true">
                 <ModalOverlay />
                 <ModalContent>
@@ -129,6 +188,7 @@ const Attendance = () => {
                             colorScheme="red"
                             onClick={() => {
                                 clearAttendance();
+                                setDuplicateAttendanceData([]);
                                 onClose();
                             }}
                         >

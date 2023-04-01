@@ -12,9 +12,16 @@ const initialState = {
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const [inputEmployeeValue, setInputEmployeeValue] = useState({});
-    const [inputAttendance, setInputAttendance] = useState({});
+    const [inputAttendance, setInputAttendance] = useState({
+        name: "",
+        id: "",
+        date: "",
+        timeIn: "",
+        timeOut: "",
+    });
     const [inputNewPay, setInputNewPay] = useState({});
     const [employeePayroll, setEmployeePayroll] = useState({});
+    const [duplicateAttendanceData, setDuplicateAttendanceData] = useState([]);
 
     // find the exact data and set it to input value
     const editEmployeeData = (id) => {
@@ -115,6 +122,14 @@ const AppProvider = ({ children }) => {
         });
     };
 
+    const removePayroll = (id) => {
+        fetch(`http://localhost:3000/payroll/${id}`, {
+            method: "DELETE",
+        }).then(() => {
+            dispatch({ type: "REMOVE_PAYROLL", payload: id });
+        });
+    };
+
     return (
         <Context.Provider
             value={{
@@ -136,6 +151,9 @@ const AppProvider = ({ children }) => {
                 setInputNewPay,
                 employeePayroll,
                 setEmployeePayroll,
+                removePayroll,
+                duplicateAttendanceData,
+                setDuplicateAttendanceData,
             }}
         >
             {children}

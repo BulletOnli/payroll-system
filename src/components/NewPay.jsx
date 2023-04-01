@@ -12,14 +12,8 @@ import { useGlobalContext } from "../context/Context";
 import { nanoid } from "nanoid";
 
 const NewPay = () => {
-    const {
-        employeeData,
-        updatePayroll,
-        inputNewPay,
-        setInputNewPay,
-        employeePayroll,
-        setEmployeePayroll,
-    } = useGlobalContext();
+    const { employeeData, updatePayroll, inputNewPay, setInputNewPay } =
+        useGlobalContext();
     const { startingDate, endingDate, rate } = inputNewPay;
 
     const handleChange = (e) => {
@@ -51,22 +45,12 @@ const NewPay = () => {
         };
     }, [startingDate, endingDate, rate]);
 
-    const calculateEarnings = () => {
-        // let startDate = new Date(inputNewPay.startingDate);
-        // let endDate = new Date(inputNewPay.endingDate);
-        // let totalTime = endDate.getTime() - startDate.getTime();
-        // let totalDays = Math.floor(totalTime / (1000 * 3600 * 24));
-        // let totalPay = inputNewPay.rate * totalDays;
-
+    useEffect(() => {
         setInputNewPay((prevState) => ({
             ...prevState,
             totalDays,
             totalPay,
         }));
-    };
-
-    useEffect(() => {
-        calculateEarnings();
     }, [startingDate, endingDate, rate]);
 
     return (
@@ -104,10 +88,7 @@ const NewPay = () => {
                 mt={2}
                 colorScheme="red"
                 onClick={() => {
-                    // calculateEarnings();
-
                     updatePayroll();
-                    // console.log(inputNewPay);
                 }}
             >
                 Calculate
