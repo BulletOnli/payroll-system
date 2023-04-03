@@ -16,7 +16,7 @@ const Paylogs = () => {
     const { payrollData, dispatch } = useGlobalContext();
 
     useEffect(() => {
-        fetch("https://payroll-jsondata.onrender.com/payroll")
+        fetch("https://bullet-json-data.onrender.com/payroll")
             .then((res) => res.json())
             .then((data) =>
                 dispatch({ type: "FETCH_PAYROLL_DATA", payload: data })

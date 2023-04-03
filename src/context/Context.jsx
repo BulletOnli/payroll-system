@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
     };
 
     const fetchEmployeeData = () => {
-        fetch(`https://payroll-jsondata.onrender.com/employees`)
+        fetch(`https://bullet-json-data.onrender.com/employees`)
             .then((res) => {
                 return res.json();
             })
@@ -40,7 +40,7 @@ const AppProvider = ({ children }) => {
     };
 
     const addNewEmployee = () => {
-        fetch("https://payroll-jsondata.onrender.com/employees", {
+        fetch("https://bullet-json-data.onrender.com/employees", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputEmployeeValue),
@@ -53,7 +53,7 @@ const AppProvider = ({ children }) => {
     };
 
     const updateEmployeeData = (id) => {
-        fetch(`https://payroll-jsondata.onrender.com/employees/${id}`, {
+        fetch(`https://bullet-json-data.onrender.com/employees/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputEmployeeValue),
@@ -67,7 +67,7 @@ const AppProvider = ({ children }) => {
     };
 
     const removeEmployee = (id) => {
-        fetch(`https://payroll-jsondata.onrender.com/employees/${id}`, {
+        fetch(`https://bullet-json-data.onrender.com/employees/${id}`, {
             method: "DELETE",
         }).then(() => {
             dispatch({
@@ -80,7 +80,7 @@ const AppProvider = ({ children }) => {
     // * functions for Attendance log
 
     const addAttendance = () => {
-        fetch("https://payroll-jsondata.onrender.com/attendanceLogs", {
+        fetch("https://bullet-json-data.onrender.com/attendanceLogs", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputAttendance),
@@ -97,7 +97,7 @@ const AppProvider = ({ children }) => {
 
         allEmployeeId.forEach((id) => {
             fetch(
-                `https://payroll-jsondata.onrender.com/attendanceLogs/${id}`,
+                `https://bullet-json-data.onrender.com/attendanceLogs/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -113,7 +113,7 @@ const AppProvider = ({ children }) => {
     //* functions for PAYROLL
     const updatePayroll = () => {
         setEmployeePayroll(inputNewPay);
-        fetch("https://payroll-jsondata.onrender.com/payroll", {
+        fetch("https://bullet-json-data.onrender.com/payroll", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputNewPay),
@@ -126,7 +126,7 @@ const AppProvider = ({ children }) => {
     };
 
     const removePayroll = (id) => {
-        fetch(`https://payroll-jsondata.onrender.com/payroll/${id}`, {
+        fetch(`https://bullet-json-data.onrender.com/payroll/${id}`, {
             method: "DELETE",
         }).then(() => {
             dispatch({ type: "REMOVE_PAYROLL", payload: id });
