@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
     };
 
     const fetchEmployeeData = () => {
-        fetch(`http://localhost:3000/employees`)
+        fetch(`https://payroll-jsondata.onrender.com/employees`)
             .then((res) => {
                 return res.json();
             })
@@ -40,7 +40,7 @@ const AppProvider = ({ children }) => {
     };
 
     const addNewEmployee = () => {
-        fetch("http://localhost:3000/employees", {
+        fetch("https://payroll-jsondata.onrender.com/employees", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputEmployeeValue),
@@ -53,7 +53,7 @@ const AppProvider = ({ children }) => {
     };
 
     const updateEmployeeData = (id) => {
-        fetch(`http://localhost:3000/employees/${id}`, {
+        fetch(`https://payroll-jsondata.onrender.com/employees/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputEmployeeValue),
@@ -67,7 +67,7 @@ const AppProvider = ({ children }) => {
     };
 
     const removeEmployee = (id) => {
-        fetch(`http://localhost:3000/employees/${id}`, {
+        fetch(`https://payroll-jsondata.onrender.com/employees/${id}`, {
             method: "DELETE",
         }).then(() => {
             dispatch({
@@ -80,7 +80,7 @@ const AppProvider = ({ children }) => {
     // * functions for Attendance log
 
     const addAttendance = () => {
-        fetch("http://localhost:3000/attendanceLogs", {
+        fetch("https://payroll-jsondata.onrender.com/attendanceLogs", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputAttendance),
@@ -96,9 +96,12 @@ const AppProvider = ({ children }) => {
         const allEmployeeId = state.attendanceData.map((data) => data.id);
 
         allEmployeeId.forEach((id) => {
-            fetch(`http://localhost:3000/attendanceLogs/${id}`, {
-                method: "DELETE",
-            }).then(() => {
+            fetch(
+                `https://payroll-jsondata.onrender.com/attendanceLogs/${id}`,
+                {
+                    method: "DELETE",
+                }
+            ).then(() => {
                 dispatch({
                     type: "CLEAR_ATTENDANCE",
                     payload: id,
@@ -110,7 +113,7 @@ const AppProvider = ({ children }) => {
     //* functions for PAYROLL
     const updatePayroll = () => {
         setEmployeePayroll(inputNewPay);
-        fetch("http://localhost:3000/payroll", {
+        fetch("https://payroll-jsondata.onrender.com/payroll", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inputNewPay),
@@ -123,7 +126,7 @@ const AppProvider = ({ children }) => {
     };
 
     const removePayroll = (id) => {
-        fetch(`http://localhost:3000/payroll/${id}`, {
+        fetch(`https://payroll-jsondata.onrender.com/payroll/${id}`, {
             method: "DELETE",
         }).then(() => {
             dispatch({ type: "REMOVE_PAYROLL", payload: id });

@@ -41,7 +41,7 @@ const Attendance = () => {
     const selectRef = useRef(null);
 
     useEffect(() => {
-        fetch("http://localhost:3000/attendanceLogs")
+        fetch("https://payroll-jsondata.onrender.com/attendanceLogs")
             .then((res) => res.json())
             .then((data) => {
                 dispatch({ type: "FETCH_ATTENDANCE_DATA", payload: data });
