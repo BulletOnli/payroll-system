@@ -1,5 +1,14 @@
 {
-  "employees": [],
+  "employees": [
+    {
+      "name": "Bullet",
+      "id": "tdSOyu6zjy_EkoIjCbQAq",
+      "position": "Developer",
+      "rate": "5000",
+      "address": "Philippines",
+      "email": "bullet@gmail.com"
+    }
+  ],
   "attendanceLogs": [],
   "payroll": []
 }
