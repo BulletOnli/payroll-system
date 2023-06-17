@@ -79,8 +79,8 @@ const Sidebar = () => {
             <Spacer />
             <Flex flexDirection="column">
                 <HStack mb="15px">
-                    <Avatar size="sm" />
-                    <Text fontWeight="semibold">User</Text>
+                    <Avatar size="sm" name="Gemmuel" />
+                    <Text fontWeight="semibold">Gemmuel</Text>
                 </HStack>
                 <Button colorScheme="red" size="md" w="100%">
                     <Icon as={WarningIcon} mr="5px" />

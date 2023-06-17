@@ -9,13 +9,14 @@ import {
     Td,
 } from "@chakra-ui/react";
 import { useGlobalContext } from "../context/Context";
+import { FaClipboardList } from "react-icons/fa";
 
 const AttendanceTable = () => {
-    const { attendanceData, duplicateAttendanceData } = useGlobalContext();
+    const { attendanceData } = useGlobalContext();
 
-    const data = duplicateAttendanceData.length
-        ? duplicateAttendanceData
-        : attendanceData;
+    // const data = duplicateAttendanceData.length
+    //     ? duplicateAttendanceData
+    //     : attendanceData;
 
     return (
         <TableContainer
@@ -35,15 +36,14 @@ const AttendanceTable = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {data &&
-                        data.map((data) => (
-                            <Tr key={data.id}>
-                                <Td>{data.date}</Td>
-                                <Td>{data.name}</Td>
-                                <Td>{data.timeIn}</Td>
-                                <Td>{data.timeOut}</Td>
-                            </Tr>
-                        ))}
+                    {attendanceData?.map((data) => (
+                        <Tr key={data.id}>
+                            <Td>{data.date}</Td>
+                            <Td>{data.name}</Td>
+                            <Td>{data.timeIn}</Td>
+                            <Td>{data.timeOut}</Td>
+                        </Tr>
+                    ))}
                 </Tbody>
             </Table>
         </TableContainer>
